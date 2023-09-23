@@ -1,10 +1,11 @@
 import { Button } from "./components/ui/button";
-import { Github, FileVideo, Upload, Wand2 } from "lucide-react";
+import { Github, Wand2 } from "lucide-react";
 import { Separator } from "./components/ui/separator";
 import { Textarea } from "./components/ui/textarea";
 import { Label } from "./components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./components/ui/select";
 import { Slider } from "./components/ui/slider";
+import { VideoInputForm } from "./components/video-input-form";
 
 
 export function App() {
@@ -39,28 +40,7 @@ export function App() {
           <p className="text-sm text-muted-foreground">Lembre-se: você pode utilizar a variável <code className="text-violet-400">{'{transcription}'}</code> no seu prompt para adicionar o conteúdo da transcrição do vídeo selecionado</p>
         </div>
         <aside className="w-80 space-y-6">
-          <form action="" className="space-y-6">
-            <label
-              htmlFor="video"
-              className="border flex rounded-md aspect-video cursor-pointer border-dashed text-sm flex-col gap-2 items-center justify-center text-muted-foreground hover:bg-primary/5"
-            >
-              <FileVideo className="h-4 w-4" />
-              Selecione um video
-            </label>
-            <input type="file" name="" id="video" accept="video/mp4" className="sr-only" />
-            <Separator />
-            <div className="space-y-2">
-              <Label htmlFor="transcription_prompt">Prompt de transcrição</Label>
-              <Textarea
-                id="transcription_prompt"
-                className="h-20 resize-none leading-relaxed"
-                placeholder="Inclua palavras-chave mencionadas no vídeo separadas por virgular (,)"
-              />
-            </div>
-            <Button className="w-full" type="submit">Carregar video
-              <Upload className="w-4 h-4 ml-2" />
-            </Button>
-          </form>
+          <VideoInputForm />
           <Separator />
           <form className="space-y-6" action="">
             <div className="space-y-2">
