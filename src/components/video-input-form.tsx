@@ -18,8 +18,11 @@ const statusMessages = {
   success: "Video carregado com sucesso...",
 }
 
+interface VideoInputFormProps {
+  onVideoUploaded: (videoId: string) => void
+}
 
-export function VideoInputForm() {
+export function VideoInputForm({ onVideoUploaded }: VideoInputFormProps) {
   const [status, setStatus] = useState<Status>('waiting')
   const [videoFile, setVideoFile] = useState<File | null>(null)
   const promptInputRef = useRef<HTMLTextAreaElement>(null)
@@ -104,9 +107,7 @@ export function VideoInputForm() {
     })
 
     setStatus("success")
-    setInterval(() => {
-      setStatus("waiting")
-    }, 2000)
+    onVideoUploaded(videoId)
   }
 
 
@@ -155,7 +156,7 @@ export function VideoInputForm() {
         {status === "waiting" ? (
           <>
             Carregar video
-            <Upload className="h-4 w-4" />
+            <Upload className="ml-2 h-4 w-4" />
           </>
         ) :
           statusMessages[status]
